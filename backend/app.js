@@ -3,7 +3,7 @@ const express=require('express');
 const app=express();
 const Twitter=require('./api/helpers/twitter');
 const twitter= new Twitter();
-const port=3000;
+const port=process.env.PORT||3000;
 require('dotenv').config();
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin','*');
