@@ -1,5 +1,5 @@
 const URL="https://api.twitter.com/2/tweets/search/recent";
-const  axios  = require('axios');
+import axios from 'axios';
 class Twitter{
 get(query,count,token){
     return axios.get(URL, {
@@ -14,10 +14,10 @@ get(query,count,token){
 
         },
         headers:{
-            "Authorization": `Bearer ${process.env.TWITTER_API_TOKEN}` 
+            "Authorization": `Bearer AAAAAAAAAAAAAAAAAAAAAOfZOwEAAAAAjzrI593jczNcyI1TocrLWQpuvjw%3DsMWOPzErhFq9S9vUaouauCRBNlAy0m2ujaAtl7PxACkBObCTv4` 
         }
     })
 }
 
 }
-module.exports=Twitter;
+export default Twitter;

@@ -1,13 +1,16 @@
 
-const express=require('express');
+import  express  from 'express';
 const app=express();
-const Twitter=require('./api/helpers/twitter');
+import Twitter from './api/helpers/twitter.js';
 const twitter= new Twitter();
 const port=process.env.PORT||3000;
-require('dotenv').config();
+import {config} from 'dotenv';
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin','*');
     next();
+})
+app.get('/',(req,res)=>{
+    res.send("hello to twitter api");
 })
 app.get('/tweets',(req,res)=>{
     const query=req.query.query;
@@ -19,4 +22,5 @@ app.get('/tweets',(req,res)=>{
         res.status(400).send(error);
          })
 })
+
 app.listen(port,()=>console.log(`Twitter API listening on ${port}!`))

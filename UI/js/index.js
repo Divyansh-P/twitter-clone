@@ -1,6 +1,6 @@
 
 
-const URL = "http://localhost:3000/tweets";
+const URL ="https://divtwitterclone.herokuapp.com/tweets";
 let nextpageurl=null;
 /**
  * Retrive Twitter Data from API
@@ -19,8 +19,8 @@ const getTwitterData = (nextpage=false) => {
     const query=document.getElementById('user-search-tweets').value;
     const encodedquery=encodeURIComponent(query);
     if(!query) return;
-const fullurl1=`${URL}?query=${encodedquery}&count=10`;
-let fullurl=`${URL}?query=${encodedquery}&count=10`;
+const fullurl1=`${URL}?query=${encodedquery}& is:retweet& -is:replies&count=10`;
+let fullurl=`${URL}?query=${encodedquery}& is:retweet& -is:replies&count=10`;
 if(nextpageurl&&nextpage){
     fullurl=nextpageurl;
 }
@@ -131,7 +131,7 @@ const buildImages = (mediaList,key) => {
        
         if(data.media_key==key&&data.type=="photo"){
             imageexist=true;
-            tweetimages+=`<div class='tweet-image' style="background-image:url(${data.url});"></div>`
+            tweetimages+=`<img class="tweet-image" src=${data.url}>`
         }
     })
     tweetimages+="`</div>`";
